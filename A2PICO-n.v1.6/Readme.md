@@ -17,15 +17,3 @@ The pinout of the "n" versions is as follows:
 | 27      |  IRQ      |
 | 28      |  RES      |
 
-There is a suggested driver for a ProDOS block device in the file Firmware files .BIN and .ASM.
-The Read/Write buffer is the 16-byte DevSel memory C0NX (N=slot+6). The volume, 512-byte Pro-DOS block selecttion and the 16-byte offsett within the block are done by the following writes (S=slot):
-
-CS00 - volume $00(D1) or $80(D2)
-
-CS01 - low byte block
-
-CS02 - high byte block
-
-CS03 - 16-byte offset within block 
-
-However, there is a current need for development of a firmware for this "n" version for the RPI Pico to drive the IO with the A2 and the MicroSD card.
