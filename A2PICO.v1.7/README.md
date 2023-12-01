@@ -12,14 +12,14 @@ Version 1.5 switches off the Expansion ROM ($C800-$CFFF) when $CFFF is accessed 
 
 Version 1.6 combines 3 of the logic chips into a PLD. 74LS08, 74LS133 and 74LS02 are replaced by ATF22V10.
 
-Version 1.7 is built upon v1.4 by replacing the 7408 by a 7411.
+Version 1.7 is built upon v1.4 by replacing the 7408 by a 7411. The data direction is controlled now by the Pico, which allows for all memory locations to be emulated. ENBL is driven by a viltage divider for minimum latency.
 
 The RPI usage is as follows:
 
 | GPIO    | Usage     |
 |:--------|:----------|
 | 0       |  UART TX  |
-| 1       |  UART RX  |
+| 1       |  DATA dir |
 | 2 - 13  | A0 - A11  |
 | 14      | R/W       |
 | 15 - 22 | D0 - D7   |
@@ -27,25 +27,3 @@ The RPI usage is as follows:
 | 27      | IRQ       |
 | 28      | RES       |
 
-Version "n" has support for a MicroSD card with **no** ExtROM capability.
-
-The RPI usage of the "n" versions is as follows:
-
-| GPIO    | Usage     |
-|:--------|:----------|
-| 0       |  SPI RX   |
-| 1       |  SPI CSn  |
-| 2       |  SPI SCK  |
-| 3       |  SPI TX   |
-| 4       |  NMI      |
-| 5 - 12  | A0 - A7   |
-| 13      | DEVSEL    |
-| 14      | R/W       |
-| 15 - 22 | D0 - D7   |
-| 26      | ENBL      |
-| 27      |  IRQ      |
-| 28      |  RES      |
-
-There is a suggested driver for a ProDOS block device for the "n" version.
-
-However, there is a current need for development of a firmware for the "n" version for the RPI Pico to drive the IO with the A2 and the MicroSD card.
