@@ -1,6 +1,6 @@
 MIT License
 
-Cpoyright (c) 2023 Ralle Palaveev (http://apple2.co.uk/)
+Copyright (c) 2023 Ralle Palaveev (http://apple2.co.uk/)
 
 Copyright (c) 2022 Oliver Schmidt (https://a2retro.de/)
 
