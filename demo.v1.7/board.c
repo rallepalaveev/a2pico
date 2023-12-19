@@ -46,6 +46,10 @@ void __time_critical_func(board)(void) {
     gpio_init(gpio_enbl);
     gpio_set_pulls(gpio_enbl, false, false);  // floating
 
+    pio_gpio_init(pio0, gpio_dir);
+    pio_sm_set_pindirs_with_mask(pio0, sm_dir, 1ul << gpio_dir, 1ul << gpio_dir);
+    pio_sm_set_pins_with_mask(   pio0, sm_dir, 0,               1ul << gpio_dir);
+
     uint offset;
 
     offset = pio_add_program(pio0, &enbl_program);
@@ -56,6 +60,9 @@ void __time_critical_func(board)(void) {
 
     offset = pio_add_program(pio0, &read_program);
     read_program_init(offset);
+
+    offset = pio_add_program(pio0, &dir_program);
+    dir_program_init(offset);
 
     active = false;
 

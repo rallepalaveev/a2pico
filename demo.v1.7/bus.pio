@@ -28,6 +28,7 @@ SOFTWARE.
 
 ///////////////////////////////////////////////////////////////////////////////
 
+.define public  gpio_dir    1   // transceiver direction 
 .define public  gpio_addr   2   // 12 pins
 .define public  gpio_rw     14
 .define public  gpio_data   15  //  8 pins
@@ -41,8 +42,10 @@ SOFTWARE.
 .define public  sm_enbl     0
 .define public  sm_read     1   // from Apple II perspective
 .define public  sm_write    2   // from Apple II perspective
+.define public  sm_dir      3
 
 .define         irq_write   4
+.define         irq_dir     5
 
 /*
 
@@ -163,6 +166,8 @@ but this would have required two operations and destroyed OSR.
 
     pull block                  // pull data into OSR, block on empty FIFO
 
+    irq irq_dir                 // set 'dir' IRQ
+
     out pins, size_data         // shift OSR out to D0-D7
 
     set pindirs, 0xF side 0xF   // enable output of D0-D7
@@ -199,6 +204,38 @@ static inline void read_program_init(uint offset) {
 
     // state_machine:   sm_read
     pio_sm_set_enabled(pio0, sm_read, true);
+}
+%}
+
+///////////////////////////////////////////////////////////////////////////////
+
+.program dir
+
+.wrap_target
+
+    wait 1 irq irq_dir          // wait for 'dir' IRQ to be set and clear it
+
+    set pins, 1                 // set transceiver direction to output
+
+    wait 1 gpio gpio_enbl       // wait for ENBL to rise
+
+    set pins, 0                 // set transceiver direction to input
+.wrap
+
+% c-sdk {
+static inline void dir_program_init(uint offset) {
+    pio_sm_config c = dir_program_get_default_config(offset);
+
+    // set_base:        gpio_dir
+    // set_count:       1
+    sm_config_set_set_pins(&c, gpio_dir, 1);
+
+    // state_machine:   sm_dir
+    // initial_pc:      offset
+    pio_sm_init(pio0, sm_dir, offset, &c);
+
+    // state_machine:   sm_dir
+    pio_sm_set_enabled(pio0, sm_dir, true);
 }
 %}
 
