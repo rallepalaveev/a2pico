@@ -3,7 +3,7 @@ The RPI usage is as follows:
 
 | GPIO    | Usage     |
 |:--------|:----------|
-| 0       |  UART TX  |
+| 0       |  UART Tx  |
 | 1       |  UART Rx  |
 | 2       |  ENBL     |
 | 3 - 10  | AD0 - AD7 |
