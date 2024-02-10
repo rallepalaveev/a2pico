@@ -19,4 +19,3 @@ The RPI usage is as follows:
 | 26      | AL-OE     |
 | 27      | D-OE      |
 | 28      | DDIR      |
-
