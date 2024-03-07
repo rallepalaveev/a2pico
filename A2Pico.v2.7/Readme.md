@@ -1,5 +1,5 @@
 
-A2Pico Version 2.7 is a new follow-up of 2.5 with some small changes - changed form factor, added USB power slide switch, added USB power LED.
+A2Pico Version 2.7 is a follow-up of 2.5 with some small changes - changed form factor, added USB power slide switch, added USB power LED.
 
 The RPI usage is as follows:
 
