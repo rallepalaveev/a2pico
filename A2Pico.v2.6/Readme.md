@@ -11,7 +11,7 @@ The RPI usage is as follows:
 | 3 - 10  | AD0 - AD7 |
 | 11 - 14 | A8 - A11  |
 | 15      | R/W       |
-| 16      | PHI1      |
+| 16      | Ф1        |
 | 17      | RES       |
 | 18      | IRQ       |
 | 19      | CMD       |
