@@ -1,10 +1,8 @@
-# A2retroNET RP2040
+# A2Pico Reference Hardware
 
-_Directly connecting the [Raspberry Pi RP2040](https://www.raspberrypi.com/products/rp2040/) to the Apple II slot bus_
+This repository is the home of the A2Pico reference hardware. Please refer to the upstream repository at https://github.com/oliverschmidt/a2pico for general information on A2Pico.
 
-[Demo Program](demo/README.md)
-
-This is a HW implementation of Oliver Schmidt's recommended designs.
+## Hardware Revision History
 
 Version 1.4 is the innitial design with 3x 74LVC245 and 1x 74HC08 to prove the concept. However it is obsolete as it does not switch off the Expansion ROM ($C800-$CFFF), which is always available and could cause data bus conlisions if used with other cards that use this memory space.
 
