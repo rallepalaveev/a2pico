@@ -42,7 +42,7 @@ The RPI usage of the "n" versions is as follows:
 | 27      |  IRQ      |
 | 28      |  RES      |
 
-Version 1.7 is a direct successor of v1.4. Changes are replacing the 7408 by a 7411, data direction is controlled now by the Pico, which allows for all memory locations to be emulated, ENBL has an option to be is driven by a voltage divider for minimum latency, a USB "back power" option is included.
+Version 1.7 is a direct successor of v1.4. Changes are replacing the 7408 by a 7411, data direction is controlled now by the Raspberry Pi Pico, which allows for all memory locations to be emulated, ENBL has an option to be is driven by a voltage divider for minimum latency, a USB "back power" option is included.
 
 The RPI usage is as follows:
 
